@@ -1,0 +1,5 @@
+*.emmx
+/docs/
+/.vscode/
+*.exe
+*.bff

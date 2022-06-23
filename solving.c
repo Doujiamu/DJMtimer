@@ -15,8 +15,8 @@ void disturb333sp(){
     int i=0,stepnum=21,stepbuff;
     int buffer;//buffer为缓存变量
     
-    if((fp=fopen("disturb_buff.txt","w"))==NULL){ //以只写形式打开文件
-        printf("文件打开失败!请在根目录下创建 disturb_buff.txt 文件以解决问题");
+    if((fp=fopen("disturb_buff.bff","w"))==NULL){ //以只写形式打开文件
+        printf("文件打开失败!请在根目录下创建 disturb_buff.bff 文件以解决问题");
 
     }
 
