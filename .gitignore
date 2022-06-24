@@ -1,5 +1,6 @@
 *.emmx
 /docs/
 /.vscode/
+/track/
 *.exe
 *.bff
