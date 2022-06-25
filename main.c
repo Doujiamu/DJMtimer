@@ -5,7 +5,7 @@
 
 void TypeError(char ch);
 
-struct Record_card{ //单个总大小 4*int + 5*char + 63*char = 12+68 = 90B
+struct Record_card{ //单个总大小 4*int + 63*char = 16+63 = 79B
     int group;
     int style;
     char disturbsteps[63];
@@ -20,6 +20,7 @@ int main(void){
     int group;
     int bakctu; //back or continue
     char ch;
+    int chtoint;
 
     srand((unsigned)time(NULL)); //程序初始化部分
     count=0;
@@ -34,7 +35,7 @@ int main(void){
         if(ch=='0'){ //退出程序
             break;
         }
-        else if(ch=='2'){  //
+        else if(ch=='2'){  //制作组信息
             printf("暂未开发...\n0 - 返回上级\n===============\n>");
             scanf("%c",&ch);
             getchar();
@@ -57,10 +58,10 @@ int main(void){
                         scanf("%c",&ch);
                         getchar();
                         if(ch=='1'){ //四级目录
-                            printf("DJMtimer >> 分组 >> %c分组 >> 计时模式\n\n=======计时模式=======",ch);
                             system("cls");
+                            printf("DJMtimer >> 分组 >> %c分组 >> 计时模式\n\n=======计时模式=======\n\n",ch);
                             do{
-                                record_card=realloc(record_card,3*sizeof(int)+68*sizeof(char));
+                                record_card=realloc(record_card,(count+1)*(sizeof(struct Record_card))); //旧版: 4*sizeof(int)+63*sizeof(char)
                                 record_card[count].group=1; //待更改
                                 printf("333打乱: ");
                                 
@@ -70,22 +71,24 @@ int main(void){
                                 record_card[count].style=3331; //待商确
 
                                 record_buff=calctime();
-
+                                record_card[count].record=record_buff;
                                 printf("你的成绩为%3d秒,是否保存(1/0)\n> ",record_buff);
                                 scanf("%c",&ch);
                                 getchar();
                                 
                                 if(ch=='1'){
-                                    record_card[count].keep=1;
+                                    chtoint=1;
+                                    record_card[count].keep=chtoint;
                                 }
                                 else if(ch=='0'){
-                                    record_card[count].keep=0;
+                                    chtoint=0;
+                                    record_card[count].keep=chtoint;
                                 }
                                 else{
                                     TypeError(ch);
                                 }
                                 count++;
-                            }while(!(bakctu==0));
+                            }while(!(chtoint==0));
                         }
                         else if(ch=='2'){
                             system("cls");
